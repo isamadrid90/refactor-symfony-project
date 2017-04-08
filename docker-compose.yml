@@ -1,0 +1,18 @@
+symfony:
+    build: ./docker
+    container_name: symfony
+    ports:
+        - "8000:80"
+    volumes:
+        - .:/var/www/
+    links:
+        - mysql-symfony:mysql
+mysql-symfony:
+    image: mysql:5.7
+    container_name: mysql-symfony
+    environment:
+        MYSQL_ROOT_PASSWORD: "661620d5c7adc9cd4eefb4925783ef106f5f9ab4cf812e4cbc3da9401593e311"
+        MYSQL_USER: "symfony_db"
+        MYSQL_PASSWORD: "symfony_db"
+    ports:
+        - "3307:3306"
